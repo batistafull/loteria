@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loteria</title>
+    <style>
+        .content {
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content .image {
+            width: 30%
+        }
+
+        .row {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row .col {
+            margin: 15px;
+            width: 30%;
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bola {
+            width: 110px;
+            height: 110px;
+            background-image: linear-gradient(to bottom right, rgb(253, 253, 253), rgb(19, 31, 65));
+            border-radius: 55px;
+            box-shadow: 0px 20px 20px #000;
+            display: none;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-family: Verdana, Tahoma, sans-serif;
+            position: absolute;
+        }
+
+        .movimientoUno {
+            animation: movimientoUno 5s;
+        }
+
+        .movimientoDos {
+            animation: movimientoDos 5s;
+        }
+
+        .movimientoTres {
+            animation: movimientoTres 5s;
+        }
+
+        @keyframes movimientoUno {
+            0% {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 300px;
+                left: 650px;
+            }
+
+            25% {
+                top: 350px;
+                left: 900px;
+                width: 110px;
+                height: 110px;
+            }
+
+            50% {
+                top: 450px;
+                left: 450px;
+
+            }
+
+            75% {
+                top: 450px;
+                left: 250px;
+            }
+
+            100% {
+                top: 450px;
+                left: 200px;
+            }
+        }
+        @keyframes movimientoDos {
+            0% {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 300px;
+                left: 650px;
+            }
+
+            25% {
+                top: 350px;
+                left: 900px;
+                width: 110px;
+                height: 110px;
+            }
+
+            50% {
+                top: 450px;
+                left: 630px;
+
+            }
+        }
+        @keyframes movimientoTres {
+            0% {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 300px;
+                left: 650px;
+            }
+
+            25% {
+                top: 350px;
+                left: 900px;
+                width: 110px;
+                height: 110px;
+            }
+
+            50% {
+                top: 450px;
+                left: 1000px;
+
+            }
+            50% {
+                left: 1070px;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <img src="./loteria.gif" class="image">
+    </div>
+    <div class="row">
+        <div class="col">
+            <div id="one" style="display: none">
+            </div>
+            <button onclick="sacarPremio(1,this)">1er Premio</button>
+        </div>
+        <div class="col">
+            <div id="two" style="display: none">
+
+            </div>
+            <button onclick="sacarPremio(2,this)">2do Premio</button>
+        </div>
+        <div class="col">
+            <div id="three" style="display: none">
+
+            </div>
+            <button onclick="sacarPremio(3,this);">3er Premio</button>
+        </div>
+    </div>
+    <script>
+        let sacarPremio = (premio,self) => {
+            self.style.display = 'none';
+            let numero = Math.round(Math.random()*99);
+            let bola_uno = document.querySelector('#one');
+            let bola_dos = document.querySelector('#two');
+            let bola_tres = document.querySelector('#three');
+            if (premio == 1) {
+                bola_uno.setAttribute('class', 'movimientoUno bola');
+                bola_uno.style.display = 'flex';
+                bola_uno.innerHTML = `<h1>${numero}</h1>`;
+            }else if (premio == 2) {
+                bola_dos.setAttribute('class', 'movimientoDos bola');
+                bola_dos.style.display = 'flex';
+                bola_dos.innerHTML = `<h1>${numero}</h1>`;
+            }else if (premio == 3) {
+                bola_tres.setAttribute('class', 'movimientoTres bola');
+                bola_tres.style.display = 'flex';
+                bola_tres.innerHTML = `<h1>${numero}</h1>`;
+            }
+        }
+    </script>
+</body>
+
+</html>
